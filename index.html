@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Shoppy Toy</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+  <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <!-- Local StyleSheet -->
+   <link href="./style.css" rel="stylesheet"/>
+   <script src="./js/addButton.js"></script>
+ 
+  
+  <!--Marker Handler Src-->
+ 
+
+</head>
+
+<body style="margin : 0px; overflow: hidden;">
+
+  <a-scene 
+    embedded vr-mode-ui="enabled: false"     
+    arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;debugUIEnabled: false;"
+    gesture-detector create-button>
+
+    <!-- Camera -->
+    <a-entity camera></a-entity>
+
+    <a-assets>
+      <a-asset-item id="crane-model" src="./assets/crane_machine/scene.gltf"></a-asset-item>
+    </a-assets>
+
+    <a-marker id="crane-marker" type="pattern" url="assets/pattern-crane.patt" cursor="rayOrgin : mouse">
+      <a-entity id="crane-3D-model" position="-1 0 0 " rotation="0 90 270" scale="0.5 0.5 0.5" gltf-model="#crane-model" gesture-handler></a-entity>
+      <a-plane position="1.8 0 0" width="3.5" height="3" rotation="-90 0 0" color="#FFFF80">
+        <a-plane position="1 1.8 0" rotation="0 0 0" width="1.75" height="0.5" color="#0096FF">
+          <a-entity position="0 0 0.1" rotation="0 0 0"
+          text="font:monoid ; value:Hydraulic Crane ; color:white ; width: 3 ; height:2 ; align:center"
+          ></a-entity>
+        </a-plane>
+        <a-entity position="0 0 0.1" rotation="0 0 0" 
+        text="font:monoid ; value:PULL BACK AND GO : Friction powered \n\n crane truck toy, 360-degree rotating \n\n left and right,machine can pull up \n\n & down,swing left & right. High \n\n Quality material:FunBlast crane toy \n\n is made of 100% hight-quality abs \n\n plastics and metal shovel which is \n\n durable,light and Non-Toxic with \n\n strong crash resistance.; color:black ; width:3 ; height:2 ; align:center"
+        ></a-entity>
+      </a-plane>
+    </a-marker>
+  </a-scene>
+
+  <!-- Button Main Div -->
+   <div id="button-div"></div>
+ 
+</body>
+
+</html>
